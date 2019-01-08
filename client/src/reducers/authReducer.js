@@ -14,19 +14,16 @@ export default function(state = initialState, action) {
 			return {
 				...state,
 				loading: false,
-				message: `${action.payload.user.name} Signed Up`
 			};
 		case authTypes.LOG_IN:
 			return {
 				...state,
 				loading: false,
-				message: `${state.user.name} Logged In`
 			};
 		case authTypes.LOG_OUT:
 			return {
 				...state,
 				loading: false,
-				message: `${state.user.name} Logged Out`
 			};
 		case authTypes.SET_CURRENT_USER:
 			return {
