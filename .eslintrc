@@ -13,12 +13,12 @@
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"semi": "error",
 		"comma-dangle": ["error", "never"],
-		"comma-spacing": ["error", { "before": false, "after": true }],
-		"no-trailing-spaces": "error",
-		"eol-last": "error",
-		"key-spacing": ["error", { "afterColon": true }],
-		"keyword-spacing": "error",
+		"comma-spacing": ["warn", { "before": false, "after": true }],
+		"no-trailing-spaces": "warn",
+		"eol-last": "warn",
+		"key-spacing": ["warn", { "afterColon": true }],
+		"keyword-spacing": "warn",
 		"no-var": "error",
-		"no-unused-vars": ["error", { "vars": "local", "args": "none" }]
+		"no-unused-vars": ["warn", { "vars": "local", "args": "none" }]
 	}
 }
