@@ -1,23 +1,47 @@
-const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
-const mongoose = require('mongoose');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20');
 
-const User = mongoose.model('user');
-const { secretOrKey } = require('./keys');
+const { clientID, clientSecret } = require('./keys');
+const User = require('../models/User');
 
-const opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = secretOrKey;
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+});
 
-module.exports = passport => {
-	passport.use(
-		new JwtStrategy(opts, (jwt_payload, done) => {
-			User.findById(jwt_payload.id)
-				.then(user => {
-					if (user) return done(null, user);
-					return done(null, false);
-				})
-				.catch(err => console.log(err));
-		})
-	);
-};
+passport.deserializeUser((id, done) => {
+	User.findById(id).then(user => {
+		done(null, user);
+	});
+});
+
+passport.use(
+	new GoogleStrategy(
+		{
+			// Options
+			callbackURL: '/auth/google/redirect',
+			clientID,
+			clientSecret
+		},
+		(accessToken, refreshToken, profile, done) => {
+			// Callback
+			// Check if user exist
+			User.findOne({ googleID: profile.id }).then(currentUser => {
+				if (currentUser) {
+					// User exist
+					done(null, currentUser);
+				} else {
+					// Create new user
+					const newUser = new User({
+						name: profile.displayName,
+						googleID: profile.id,
+						email: profile.emails[0].value
+					});
+
+					newUser.save().then(user => {
+						done(null, user);
+					});
+				}
+			});
+		}
+	)
+);

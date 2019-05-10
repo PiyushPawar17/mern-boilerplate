@@ -1,6 +1,6 @@
 {
 	"name": "mern",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "",
 	"main": "server.js",
 	"author": "Piyush Pawar <piyushpawar25@gmail.com>",
@@ -17,22 +17,20 @@
 		"lint": "eslint ."
 	},
 	"dependencies": {
-		"bcryptjs": "^2.4.3",
-		"body-parser": "^1.18.3",
+		"body-parser": "^1.19.0",
+		"cookie-session": "^1.3.3",
 		"express": "^4.16.4",
-		"jsonwebtoken": "^8.4.0",
 		"lodash": "^4.17.11",
-		"mongoose": "^5.3.15",
+		"mongoose": "^5.5.7",
 		"passport": "^0.4.0",
-		"passport-jwt": "^4.0.0",
-		"validator": "^10.9.0"
+		"passport-google-oauth20": "^2.0.0"
 	},
 	"devDependencies": {
 		"concurrently": "^4.1.0",
-		"eslint": "^5.11.0",
-		"eslint-config-prettier": "^3.3.0",
-		"eslint-plugin-prettier": "^3.0.0",
-		"nodemon": "^1.18.9",
-		"prettier": "^1.15.3"
+		"eslint": "5.16.0",
+		"eslint-config-prettier": "^4.2.0",
+		"eslint-plugin-prettier": "^3.0.1",
+		"nodemon": "^1.19.0",
+		"prettier": "^1.17.0"
 	}
 }
