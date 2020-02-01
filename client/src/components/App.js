@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -10,24 +10,22 @@ import NotFound from './NotFound';
 
 import '../sass/main.scss';
 
-class App extends React.Component {
-	componentDidMount = () => {
+function App() {
+	useEffect(() => {
 		store.dispatch(getUser());
-	};
+	}, []);
 
-	render() {
-		return (
-			<Provider store={store}>
-				<Router>
-					<div>
-						<Switch>
-							<Route component={NotFound} />
-						</Switch>
-					</div>
-				</Router>
-			</Provider>
-		);
-	}
+	return (
+		<Provider store={store}>
+			<Router>
+				<div>
+					<Switch>
+						<Route component={NotFound} />
+					</Switch>
+				</div>
+			</Router>
+		</Provider>
+	);
 }
 
 export default App;

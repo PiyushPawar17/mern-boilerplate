@@ -51,6 +51,6 @@ yarn run client
 ### Details
 
 -   `routes/api` folder contains user Registration and Login Routes.
--   `config` folder contains keys and passport-jwt strategy.
+-   `config` folder contains keys and Passport Google Strategy.
 -   `utils` folder contains utility functions for input validation.
 -   Sass / SCSS is used for styling.
